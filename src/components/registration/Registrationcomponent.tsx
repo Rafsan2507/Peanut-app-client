@@ -1,11 +1,31 @@
-import React from "react";
-
+import React, { useState} from "react";
+import { signUp } from "@/services/apiServices";
 type Props = {};
 
 export default function Registrationcomponent({}: Props) {
+
+  const [user, setUser] = useState({ firstname: "", lastname: "", username: "", age: "", email: "", password: "" });
+  const [users, setUsers] = useState([]);
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e ) => {
+    e.preventDefault();
+    try {
+      const newUser = await signUp(user);
+      setUsers([...users, newUser]);
+      setUser({ firstname: "", lastname: "", username: "", age: "", email: "", password: "" });
+    } catch (error) {
+      console.error("Error creating event:", error);
+    }
+  };
+
   return (
-    <div className="bg-sky-300 h-screen w-screen flex flex-col">
-      <div className="flex justify-center mt-[10vh] mb-[4vh]">
+    <div className="bg-[#1d1415] h-screen w-screen flex flex-col">
+      <div className="flex justify-center mt-[10vh] mb-[4vh] text-[#fedada]">
         <h1>Sign Up!</h1>
       </div>
       <form className="px-[15vw] space-y-[3vh]">
@@ -14,7 +34,7 @@ export default function Registrationcomponent({}: Props) {
             type="text"
             name="title"
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="First Name..."
+            placeholder="first name"
           />
         </div>
         <div className="flex flex-col justify-center">
@@ -22,7 +42,7 @@ export default function Registrationcomponent({}: Props) {
             type="text"
             name="title"
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="Last Name..."
+            placeholder="last name"
           />
         </div>
         <div className="flex flex-col justify-center">
@@ -30,7 +50,7 @@ export default function Registrationcomponent({}: Props) {
             type="text"
             name="title"
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="Username"
+            placeholder="username"
           />
         </div>
         <div className="flex flex-col justify-center">
@@ -38,7 +58,15 @@ export default function Registrationcomponent({}: Props) {
             type="text"
             name="title"
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="Email"
+            placeholder="email"
+          />
+        </div>
+        <div className="flex flex-col justify-center">
+          <input
+            type="password"
+            name="title"
+            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
+            placeholder="password"
           />
         </div>
         <div className="flex flex-col justify-center">
@@ -46,16 +74,16 @@ export default function Registrationcomponent({}: Props) {
             type="number"
             name="title"
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="Age"
+            placeholder="age"
           />
         </div>
         <div className="flex flex-col justify-center ph-[5vh]">
-          <button className="bg-lime-400 h-[5vh] rounded-[0.5vh]" type="submit">Register</button>
+          <button className="bg-[#f7b0b6] h-[5vh] rounded-[0.5vh] text-[#751d29]" type="submit">Register</button>
         </div>
       </form>
-      <div className="flex justify-center mt-[2vh]">
+      <div className="flex justify-center mt-[2vh] text-[#fedada]">
         Already have an account?
-        <a href="#" className="text-fuchsia-700 underline">
+        <a href="#" className="text-[#ab9fa9] underline">
           Log in
         </a>
       </div>
