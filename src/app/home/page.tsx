@@ -1,3 +1,6 @@
+"use client";
+
+import Cardcomponent from '@/components/home/Cardcomponent'
 import Topnavbar from '@/components/home/Topnavbar'
 import React from 'react'
 
@@ -7,6 +10,7 @@ function page({}: Props) {
   return (
     <>
     <Topnavbar/>
+    <Cardcomponent/>
     </>
   )
 }

@@ -4,7 +4,7 @@ type Props = {};
 
 export default function Registrationcomponent({}: Props) {
 
-  const [user, setUser] = useState({ firstname: "", lastname: "", username: "", age: "", email: "", password: "" });
+  /* const [user, setUser] = useState({ firstname: "", lastname: "", username: "", age: "", email: "", password: "" });
   const [users, setUsers] = useState([]);
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -21,7 +21,7 @@ export default function Registrationcomponent({}: Props) {
     } catch (error) {
       console.error("Error creating event:", error);
     }
-  };
+  }; */
 
   return (
     <div className="bg-[#1d1415] h-screen w-screen flex flex-col">
