@@ -8,7 +8,7 @@ function Topnavbar({}: Props) {
       <div className="pl-[5vw]">
         <IoPersonCircleSharp className="size-[4vh]"color="#ffffff"/>
       </div>
-      <div className="px-[28vw] text-[#e0a5aa] justify-self-center text-[1.2rem]">
+      <div className="px-[28vw] text-[#f5bcc7] justify-self-center text-[1.2rem] font-semibold">
         <h2>peanut</h2>
       </div>
     </div>
