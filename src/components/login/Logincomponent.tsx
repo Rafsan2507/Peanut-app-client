@@ -30,7 +30,7 @@ export default function Logincomponent({}: Props) {
       </div>
       </form>
       <div className="flex justify-center mt-[2vh] text-[#fedada]">
-        Don't have an account?
+        Don&apos;t have an account?
         <a href="#" className="text-[#ab9fa9] underline">
           Sign up
         </a>
