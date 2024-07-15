@@ -3,11 +3,10 @@
 //write signup login function
 import axios from "axios";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
-type SignUpUser = {
+export type SignUpUser = {
   firstname: string;
   lastname: string;
   username: string;
-  age: number;
   email: string;
   password: string;
 };
@@ -18,18 +17,18 @@ type LogInUser = {
 
 export async function signUp(data: SignUpUser) {
   try {
-    const response = await axios.post(`${baseUrl}/register`, data);
-    console.log(response.data);
+    const response = await axios.post(`${baseUrl}/sign-up`, data);
+    return response.data;
   } catch (error) {
     console.error("Error signing up:", error);
   }
-};
+}
 
-export const logIn = async function logIn(data: LogInUser) {
+export async function logIn(data: LogInUser) {
   try {
     const response = await axios.post(`${baseUrl}/login`, data);
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error("Error logging in:", error);
   }
-};
+}
