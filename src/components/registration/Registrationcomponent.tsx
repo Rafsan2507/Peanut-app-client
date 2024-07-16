@@ -14,7 +14,7 @@ export default function Registrationcomponent({}: Props) {
     password: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: String } }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };

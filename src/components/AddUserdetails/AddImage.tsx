@@ -38,12 +38,10 @@ const AddImage = (props: Props) => {
               className="bg-[#f7b0b6] h-[5vh] w-[20vw] rounded-[0.5vh] text-[#751d29]"
               /* onClick={handleAddImageToDatabase} */
             >
-              Add to Database
+              Add
             </button>
           </div>
-          <button
-            className="bg-[#f7b0b6] h-[5vh] w-[20vw] mt-[40vh] rounded-[0.5vh] text-[#751d29]"
-          >
+          <button className="bg-[#f7b0b6] h-[5vh] w-[20vw] mt-[50vh] ml-[70vw] rounded-[0.5vh] text-[#751d29]">
             next
           </button>
         </div>

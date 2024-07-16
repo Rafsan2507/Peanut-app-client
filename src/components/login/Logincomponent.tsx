@@ -14,7 +14,7 @@ export default function Logincomponent({}: Props) {
 
   const router = useRouter();
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
