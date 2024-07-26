@@ -1,55 +1,108 @@
 "use client";
+import { getHobbyList, postPreferences } from "@/services/authServices";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa6";
+
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 type Props = {};
 
 const AddHobbies = (props: Props) => {
-  const [activities, setActivities] = useState<String[]>([]);
-  //const [dialogOpen, setDialogOpen] = useState(false);
+  const [activities, setActivities] = useState<{ id: number, activity: string }[]>([]);
+  const [preferences, setPreferences] = useState<number[]>([]);
+  const [selectedActivities, setSelectedActivities] = useState<{ id: number, activity: string }[]>([]);
+
+  const router = useRouter();
+
   useEffect(() => {
-    const getallActivities = async () => {
+    const getAllActivities = async () => {
       try {
-        const allActivities = await getAllTransaction();
-        setActivities(allActivities);
-        console.log(activities);
+        const activityList = await getHobbyList();
+        setActivities(activityList);
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.error("Error fetching activities:", error);
       }
     };
-    getallTransactions();
+    getAllActivities();
   }, []);
-  const preferences = [
-    "Foodie",
-    "Neighborhood newbie",
-    "Leo",
-    "Wine time",
-    "Bookworm",
-    "Crafty",
-    "Beauty & style",
-    "Writing",
-    "Yoga",
-  ];
+
+  const handleSelectActivity = (activityId: number, activityName: string) => {
+    setPreferences((prevPreferences) => {
+      if (prevPreferences.includes(activityId)) {
+        setSelectedActivities(selectedActivities.filter((activity) => activity.id !== activityId));
+        return prevPreferences.filter((id) => id !== activityId);
+      } else {
+        setSelectedActivities([...selectedActivities, { id: activityId, activity: activityName }]);
+        return [...prevPreferences, activityId];
+      }
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await postPreferences(preferences);
+      router.push("/home");
+      //console.log(response);
+    } catch (error) {
+      console.error("Error submitting preferences:", error);
+    }
+  };
+
+  const pathname = usePathname()
+
   return (
     <>
-      <div className="bg-[#1d1415] h-screen w-screen flex flex-col items-center pt-[8vh]">
-        <div className="text-white mb-[5vh]">
-          <h2>Select Preferences</h2>
-        </div>
-        <div className="grid grid-cols-3 gap-[4vw] mb-[5vh]">
-          {preferences.map((preference) => (
-            <button
-              key={preference}
-              className="bg-[#751d29] text-[#f7b0b6] text-[1.5vh] h-[10vh] w-[28vw] rounded-[1vh]"
-            >
-              {preference}
-            </button>
-          ))}
-        </div>
-        <button className="bg-[#f7b0b6] h-[5vh] w-[20vw] mt-[30vh] ml-[70vw] rounded-[0.5vh] text-[#751d29]">
-          next
-        </button>
+    <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-[90vh] w-[100vw] flex flex-col items-center pt-[6vh]">
+      <div className="text-[#301f62] mb-[5vh]">
+        <h2>Preferences</h2>
       </div>
+      <div className="grid grid-cols-3 gap-[5vw] mb-[15vh]">
+        {activities.map(({ id, activity }) => (
+          <button
+            key={id}
+            onClick={() => handleSelectActivity(id, activity)}
+            className={`text-[1.7vh] h-[5.5vh] border w-[26vw] rounded-[5vh] ${
+              preferences.includes(id)
+                ? "bg-[#7559aa] text-white"
+                : " text-[#301f62]"
+            }`}
+          >
+            {activity}
+          </button>
+        ))}
+      </div>
+      
+      <div className="grid grid-cols-3 gap-[4vw]">
+        {selectedActivities.map(({ id, activity }) => (
+          <div
+            key={id}
+            className="text-[1.7vh] h-[5.5vh] w-[26vw] rounded-[15vh] bg-indigo-500 text-[#fffcff] flex items-center justify-center"
+          >
+            {activity}
+          </div>
+        ))}
+      </div>
+      
+      
+    </div>
+    <div className="bg-[#6e7df0] h-[10vh]">
+    <button
+      onClick={handleSubmit}
+      className="bg-gradient-to-l from-[#f9457f] to-[#8649f4] h-[5vh] w-[20vw] ml-[70vw] rounded-[1vh] text-white"
+    >
+      <Link
+            className={`link ${pathname === '/home' ? 'active' : ''}`}
+            href="/home"
+          >
+      <FaArrowRight className="size-[4vh] ml-[5vw]" color="#90F68C"/>
+      </Link>
+    </button>
+    </div>
     </>
+    
   );
 };
 

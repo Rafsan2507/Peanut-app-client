@@ -27,7 +27,7 @@ export default function Registrationcomponent({}: Props) {
     try {
       const newUser = await signUp(user);
       setToken(newUser.accessToken);
-      router.push("/home");
+      router.push("/due");
       setUser({
         firstname: "",
         lastname: "",
@@ -41,19 +41,20 @@ export default function Registrationcomponent({}: Props) {
   };
 
   return (
-    <div className="bg-[#1d1415] h-screen w-screen flex flex-col">
-      <div className="flex justify-center mt-[10vh] mb-[4vh] text-[#fedada]">
-        <h1>Sign Up!</h1>
+    <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-screen w-screen flex flex-col">
+      <div className="flex justify-center mt-[10vh] mb-[4vh] text-gray-800">
+        <h2>Register</h2>
       </div>
-      <form onSubmit={handleSubmit} className="px-[15vw] space-y-[3vh]">
+      <form onSubmit={handleSubmit} className="px-[16vw] space-y-[3vh]">
         <div className="flex flex-col justify-center">
           <input
             type="text"
             name="firstname"
             value={user.firstname}
             onChange={handleChange}
-            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="first name"
+            className="h-[5vh] pl-[1vh] rounded-full bg-[#CA8BEF] placeholder-gray-700"
+            placeholder="First name"
+            
             required
           />
         </div>
@@ -63,8 +64,8 @@ export default function Registrationcomponent({}: Props) {
             name="lastname"
             value={user.lastname}
             onChange={handleChange}
-            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="last name"
+            className="h-[5vh] pl-[1vh] rounded-full bg-[#D0A1ED] placeholder-gray-700"
+            placeholder="Last name"
             required
           />
         </div>
@@ -74,8 +75,8 @@ export default function Registrationcomponent({}: Props) {
             name="username"
             value={user.username}
             onChange={handleChange}
-            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="username"
+            className="h-[5vh] pl-[1vh] rounded-full bg-purple-300 placeholder-gray-700"
+            placeholder="Username"
             required
           />
         </div>
@@ -85,7 +86,7 @@ export default function Registrationcomponent({}: Props) {
             name="email"
             value={user.email}
             onChange={handleChange}
-            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
+            className="h-[5vh] pl-[1vh] rounded-full bg-purple-200 placeholder-gray-700"
             placeholder="email"
             required
           />
@@ -96,24 +97,27 @@ export default function Registrationcomponent({}: Props) {
             name="password"
             value={user.password}
             onChange={handleChange}
-            className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
-            placeholder="password"
+            className="h-[5vh] pl-[1vh] rounded-full bg-purple-100 placeholder-gray-700"
+            placeholder="Password"
             required
           />
         </div>
 
-        <div className="flex flex-col justify-center ph-[5vh] mt-[3vh]">
-          <button
-            className="bg-[#f7b0b6] h-[5vh] rounded-[0.5vh] text-[#751d29]"
+        <div className="flex flex-col justify-center ph-[5vh] mt-[3vh] px-[22vw]">
+          {/* <button
+            className="bg-gradient-to-l from-gray-500 to-slate-900 h-[5vh] rounded-[1vh] text-white"
             type="submit"
           >
             Sign Up
-          </button>
+          </button> */}
+          <button type="submit" className="bg-gradient-to-l from-purple-400 to-blue-500 hover:from-rose-500 hover:to-blue-500 h-[5vh] rounded-[2vh]">
+  Sign Up
+</button>
         </div>
       </form>
-      <div className="flex justify-center mt-[2vh] text-[#fedada]">
+      <div className="flex justify-center mt-[7vh] text-[#fedada]">
         Already have an account?
-        <a href="#" className="text-[#ab9fa9] underline">
+        <a href="#" className="white underline">
           Log in
         </a>
       </div>

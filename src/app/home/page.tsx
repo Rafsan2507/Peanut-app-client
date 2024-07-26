@@ -1,7 +1,6 @@
 "use client";
 
 import Bottombar from '@/components/home/Bottombar';
-import Buttoncomponent from '@/components/home/Buttoncomponent';
 import Cardcomponent from '@/components/home/Cardcomponent'
 import Topnavbar from '@/components/home/Topnavbar'
 import React from 'react'
@@ -12,10 +11,14 @@ function page({}: Props) {
   return (
     <>
     
+    <div className='bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0]'>
     <Topnavbar/>
+    
     <Cardcomponent/>
-    <Buttoncomponent/>
     <Bottombar/>
+    </div>
+    
+    
     </>
   )
 }

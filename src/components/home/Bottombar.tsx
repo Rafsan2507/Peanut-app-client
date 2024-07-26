@@ -9,7 +9,7 @@ type Props = {}
 
 const Bottombar = (props: Props) => {
   return (
-    <div className="bg-[#282828] flex items-center justify-around h-[8vh]">
+    <div className="flex items-center justify-around mt-[80vh] h-[10vh]">
       <IconContext.Provider value={{ color: '#7D848D', size: '20' }}>
         <RiHome3Line color='#fddad9'/>
         <IoChatboxOutline color='#fddad9'/>

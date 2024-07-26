@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdTime } from "react-icons/io";
 import { RxHand } from "react-icons/rx";
 import { GiLeo } from "react-icons/gi";
@@ -8,12 +8,51 @@ import { TbWriting } from "react-icons/tb";
 import { FaWineGlassAlt } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { GrYoga } from "react-icons/gr";
-type Props = {};
+import { getUserPreferences } from "@/services/infoServices";
+type Props = {
+  id: number;
+};
 
-const Hobbies = (props: Props) => {
+const Hobbies = ({ id }: Props) => {
+
+  const [activities, setActivities] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const activitiesData = await getUserPreferences(id);
+        console.log("Fetched activities data:", activitiesData); // Debugging line
+        if (activitiesData && Array.isArray(activitiesData.activities)) {
+          setActivities(activitiesData.activities);
+        } else {
+          console.error("Fetched data does not contain an array:", activitiesData);
+          setActivities([]);
+        }
+      } catch (error) {
+        console.error("Error fetching activities:", error);
+      }
+    };
+
+    fetchActivities();
+  }, [id]);
   return (
     <>
-      <div className="bg-[#000000] space-y-[2vh] pl-[3vw] pb-[2vh]">
+    <div className="grid grid-cols-3 gap-3 p-4">
+      {activities.map((activity: string, index: number) => (
+        <div key={index} className="text-[0.8rem] text-gray-800 p-4 border rounded-md shadow-md">
+          {activity}
+        </div>
+      ))}
+    </div>
+      
+    </>
+  );
+};
+
+export default Hobbies;
+
+
+{/* <div className="bg-[#000000] space-y-[2vh] pl-[3vw] pb-[2vh]">
         <div className="flex flex-row pt-[5vh]">
           <IoMdTime className="size-[3vh] mr-[2vw]" color="#fddad9" />
           <h2 className="text-[#efd6d4]">Working full time</h2>
@@ -59,9 +98,4 @@ const Hobbies = (props: Props) => {
             <h2 className="text-[#efd6d4]">Yoga</h2>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
-
-export default Hobbies;
+      </div> */}
