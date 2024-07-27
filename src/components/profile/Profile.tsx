@@ -1,9 +1,10 @@
 "use client";
 import { getUserProfile } from "@/services/infoServices";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { TbBrandPeanut } from "react-icons/tb";
-
+type Props = {};
 interface UserProfile {
   id: number;
   firstname: string;
@@ -11,13 +12,14 @@ interface UserProfile {
   image: string;
 }
 
-const Profile = ({ id }: { id: number }) => {
+const Profile = (props: Props) => {
   const [person, setPerson] = useState<UserProfile | null>(null);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const userProfile = await getUserProfile(id);
+        const userProfile = await getUserProfile(Number(id));
         console.log("Fetched user profile:", userProfile);
         setPerson(userProfile);
       } catch (error) {

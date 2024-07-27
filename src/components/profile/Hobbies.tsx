@@ -9,18 +9,18 @@ import { FaWineGlassAlt } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { GrYoga } from "react-icons/gr";
 import { getUserPreferences } from "@/services/infoServices";
-type Props = {
-  id: number;
-};
+import { useParams } from "next/navigation";
+type Props = {};
 
-const Hobbies = ({ id }: Props) => {
+const Hobbies = (props: Props) => {
 
   const [activities, setActivities] = useState<string[]>([]);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const activitiesData = await getUserPreferences(id);
+        const activitiesData = await getUserPreferences(Number(id));
         console.log("Fetched activities data:", activitiesData); // Debugging line
         if (activitiesData && Array.isArray(activitiesData.activities)) {
           setActivities(activitiesData.activities);

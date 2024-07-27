@@ -4,6 +4,7 @@ import { uploadImageToCloudinary, postImageUrl } from "@/services/infoServices";
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { HiOutlineChevronDoubleRight } from "react-icons/hi";
+import Image from "next/image";
 
 type Props = {};
 
@@ -53,7 +54,7 @@ const AddImage = (props: Props) => {
         </div>
         <div className="flex flex-col items-center mb-[5vh]">
           {previewUrl && (
-            <img
+            <Image
               src={previewUrl}
               alt="Preview"
               className="h-[30vh] w-[40vw] object-cover rounded-[0.5vh] mb-[2vh]"
