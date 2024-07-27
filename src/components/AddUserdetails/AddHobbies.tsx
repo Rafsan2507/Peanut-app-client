@@ -91,7 +91,7 @@ const AddHobbies = (props: Props) => {
     <div className="bg-[#6e7df0] h-[10vh]">
     <button
       onClick={handleSubmit}
-      className="bg-gradient-to-l from-[#f9457f] to-[#8649f4] h-[5vh] w-[20vw] ml-[70vw] rounded-[1vh] text-white"
+      className="bg-gradient-to-l from-[#f9457f] to-[#8649f4] h-[5vh] w-[18vw] ml-[70vw] rounded-[1.5vw] text-white"
     >
       <Link
             className={`link ${pathname === '/home' ? 'active' : ''}`}

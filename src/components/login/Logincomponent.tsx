@@ -2,8 +2,8 @@
 import React, { useState, FormEvent } from "react";
 import { logIn } from "@/services/authServices";
 import { setToken } from "@/services/tokenServices";
-import { useRouter } from "next/navigation";
-
+import { useRouter, usePathname } from "next/navigation";
+import Link from 'next/link'
 type Props = {};
 
 export default function Logincomponent({}: Props) {
@@ -34,9 +34,12 @@ export default function Logincomponent({}: Props) {
       console.error("Error creating event:", error);
     }
   };
+
+  const pathname = usePathname();
+
   return (
     <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-screen w-screen flex flex-col">
-      <div className="flex justify-center mt-[20vh] mb-[4vh] text-black">
+      <div className="flex justify-center mt-[20vh] mb-[4vh] text-black font-semibold">
         <h1>Log In</h1>
       </div>
       <form onSubmit={handleSubmit} className="px-[16vw]">
@@ -75,11 +78,14 @@ export default function Logincomponent({}: Props) {
 </button>
         </div>
       </form>
-      <div className="flex justify-center mt-[2vh] text-[#fedada]">
+      <div className="flex justify-center mt-[5vh] text-[#fedada]">
         Don&apos;t have an account?
-        <a href="#" className="text-gray-700 underline">
-          Sign up
-        </a>
+        <Link
+            className={`link ${pathname === '/registration' ? 'active' : ''} underline ml-[1vw]`}
+            href="/registration"
+          >
+          Sign Up
+        </Link>
       </div>
     </div>
   );
