@@ -22,7 +22,7 @@ const AddDue = () => {
   return (
     <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-screen w-screen">
       <div className="flex flex-row items-center pt-[40vh]">
-        <div className="text-cyan-300 ml-[20vw] mr-[4vw]">
+        <div className="text-cyan-50 text-[18px] ml-[20vw] mr-[4vw]">
           <h2>Due In Weeks</h2>
         </div>
         <form onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ const AddDue = () => {
               name="dueValue"
               value={dueValue}
               onChange={(e) => setDueValue(e.target.value)}
-              className="h-[5vh] w-[20vw] pl-[1vh] rounded-[0.5vh]"
+              className="bg-pink-100 h-[5vh] w-[20vw] pl-[1vh] rounded-[0.5vh] shadow-[5px_12px_20px_-10px_rgba(0,0,0,1)]"
               required
             />
           </div>
@@ -44,7 +44,7 @@ const AddDue = () => {
           type="submit"
           onClick={handleSubmit}
         >
-          <HiOutlineChevronDoubleRight className="size-[4vh] ml-[5vw]" color="#90F68C"/>
+          <HiOutlineChevronDoubleRight className="size-[5vh] ml-[4vw]" color="#FB16FA"/>
         </button>
       </div>
     </div>

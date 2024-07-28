@@ -13,7 +13,7 @@ const Connections = (props: Props) => {
   return (
     <>
       <div className="pt-[4vh]">
-        <h2 className="text-gray-800 mb-[5vh] ml-[3vw]">Connections</h2>
+        <h2 className="text-zinc-100 mb-[5vh] ml-[3vw]">Connections</h2>
         <div className="flex flex-row items-center relative">
           {people.map((person, index) => (
             <Image
@@ -29,10 +29,10 @@ const Connections = (props: Props) => {
       </div>
 
       <div className="flex grid flex-col justify-items-center h-[20vh] pt-[5vh]">
-        <h2 className="text-gray-800 mb-[4vh]">
+        <h2 className="text-zinc-100 mb-[4vh]">
           Peanut member since October 2022
         </h2>
-        <h2 className="text-gray-800">Block | Report</h2>
+        <h2 className="text-zinc-100">Block | Report</h2>
       </div>
     </>
   );

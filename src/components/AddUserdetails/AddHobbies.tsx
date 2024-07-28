@@ -2,7 +2,7 @@
 import { getHobbyList, postPreferences } from "@/services/authServices";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa6";
+import { HiOutlineChevronDoubleRight } from "react-icons/hi";
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -56,7 +56,7 @@ const AddHobbies = (props: Props) => {
   return (
     <>
     <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-[90vh] w-[100vw] flex flex-col items-center pt-[6vh]">
-      <div className="text-[#301f62] mb-[5vh]">
+      <div className="text-[1.2rem] text-cyan-100 font-semibold mb-[5vh]">
         <h2>Preferences</h2>
       </div>
       <div className="grid grid-cols-3 gap-[5vw] mb-[15vh]">
@@ -64,10 +64,10 @@ const AddHobbies = (props: Props) => {
           <button
             key={id}
             onClick={() => handleSelectActivity(id, activity)}
-            className={`text-[1.7vh] h-[5.5vh] border w-[26vw] rounded-[5vh] ${
+            className={`text-[1.8vh] font-semibold h-[5.5vh] border border-cyan-200 w-[26vw] rounded-[5vh] shadow-[5px_12px_20px_-6px_rgba(60,200,255,1)] ${
               preferences.includes(id)
-                ? "bg-[#7559aa] text-white"
-                : " text-[#301f62]"
+                ? "bg-[#7559aa] text-green-100"
+                : " text-purple-900"
             }`}
           >
             {activity}
@@ -79,7 +79,7 @@ const AddHobbies = (props: Props) => {
         {selectedActivities.map(({ id, activity }) => (
           <div
             key={id}
-            className="text-[1.7vh] h-[5.5vh] w-[26vw] rounded-[15vh] bg-indigo-500 text-[#fffcff] flex items-center justify-center"
+            className="text-[1.8vh] font-semibold h-[5.5vh] w-[26vw] rounded-[15vh] bg-blue-600 text-yellow-200 flex items-center justify-center shadow-[5px_12px_20px_-8px_rgba(0,0,0,1)]"
           >
             {activity}
           </div>
@@ -91,13 +91,13 @@ const AddHobbies = (props: Props) => {
     <div className="bg-[#6e7df0] h-[10vh]">
     <button
       onClick={handleSubmit}
-      className="bg-gradient-to-l from-[#f9457f] to-[#8649f4] h-[5vh] w-[18vw] ml-[70vw] rounded-[1.5vw] text-white"
+      className="bg-slate-800 h-[5vh] w-[18vw] ml-[70vw] rounded-[1.5vw] shadow-[0px_10px_15px_-8px_rgba(0,0,0,1)]"
     >
       <Link
             className={`link ${pathname === '/home' ? 'active' : ''}`}
             href="/home"
           >
-      <FaArrowRight className="size-[4vh] ml-[5vw]" color="#90F68C"/>
+      <HiOutlineChevronDoubleRight className="size-[5vh] ml-[4vw]" color="#FB16FA"/>
       </Link>
     </button>
     </div>
@@ -107,3 +107,5 @@ const AddHobbies = (props: Props) => {
 };
 
 export default AddHobbies;
+
+/* bg-gradient-to-r from-indigo-800 to-pink-600 */

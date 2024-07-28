@@ -49,7 +49,7 @@ const AddImage = (props: Props) => {
     <>
     <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-[90vh] w-screen">
       <div className="flex flex-col items-center pt-[10vh]">
-        <div className="text-white mb-[5vh]">
+        <div className="text-cyan-50 text-[18px] mb-[5vh]">
           <h2>Upload Image</h2>
         </div>
         <div className="flex flex-col items-center mb-[5vh]">
@@ -57,6 +57,8 @@ const AddImage = (props: Props) => {
             <Image
               src={previewUrl}
               alt="Preview"
+              width={100}
+              height={200}
               className="h-[30vh] w-[40vw] object-cover rounded-[0.5vh] mb-[2vh]"
             />
           )}
@@ -66,7 +68,7 @@ const AddImage = (props: Props) => {
             className="text-white mb-[2vh]"
           />
           <button
-            className="bg-[#ff386a] h-[5vh] w-[20vw] rounded-[0.5vh] text-white"
+            className="bg-gradient-to-r from-purple-500 to-cyan-400 h-[5vh] w-[20vw] rounded-[0.5vh] text-pink-100 shadow-[2px_12px_20px_-6px_rgba(0,0,0,1)]"
             onClick={handleUpload}
             disabled={uploading}
           >
@@ -83,7 +85,7 @@ const AddImage = (props: Props) => {
             className={`link ${pathname === '/hobby' ? 'active' : ''}`}
             href="/hobby"
           >
-    <HiOutlineChevronDoubleRight className="size-[4vh] ml-[5vw]" color="#90F68C"/>
+    <HiOutlineChevronDoubleRight className="size-[5vh] ml-[4vw]" color="#FB16FA"/>
     </Link>
   </button>
   </div>

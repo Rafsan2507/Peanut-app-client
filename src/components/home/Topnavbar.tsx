@@ -18,7 +18,7 @@ function Topnavbar({}: Props) {
       {/* <div className="pl-[5vw]">
         <IoPersonCircleSharp className="size-[4vh]" color="#ffffff"/>
       </div> */}
-      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-500 inline-block text-transparent bg-clip-text px-[5vw] justify-self-center text-[1.5rem] font-semibold ml-[35vw]">
+      <div className="bg-gradient-to-r from-orange-600 via-rose-600 to-blue-700 inline-block text-transparent bg-clip-text px-[5vw] justify-self-center text-[1.6rem] font-semibold ml-[35vw]">
         <h2>peanut</h2>
       </div>
 

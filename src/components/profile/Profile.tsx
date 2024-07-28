@@ -35,19 +35,19 @@ const Profile = (props: Props) => {
   return (
     <>
       <div>
-        <h2 className="w-[100vw] flex text-left text-gray-700 text-[1.5rem] font-bold p-[2vh]">
+        <h2 className="w-[100vw] flex text-left text-zinc-100 text-[1.6rem] font-bold pt-[4vh] pl-[6vw]">
           {person?.firstname}
         </h2>
-        <div className="flex flex-row h-[6vh] pl-[5vw] items-center">
-          <TbBrandPeanut className="size-[4vh] mr-[2vw]" color="#374151" />
-          <h2 className="text-gray-700">{person?.due}</h2>
+        <div className="flex flex-row h-[6vh] pl-[4.5vw] items-center">
+          <TbBrandPeanut className="size-[5vh] mr-[2vw]" color="#7612FF" />
+          <h2 className="text-zinc-100">{person?.due} week</h2>
         </div>
 
-        <div className="relative w-[100vw] h-[75vh] px-[1vw]">
+        <div className="relative w-[100vw] h-[70vh] px-[1vw] mt-[1vh]">
           {person?.image && (
             <Image
               src={person.image}
-              className="card w-full h-full bg-cover bg-center rounded-[1vh]"
+              className="card w-full h-full bg-cover bg-center border border-2 border-green-100 rounded-[1vh] shadow-[5px_15px_20px_-15px_rgba(0,0,0,1)]"
               width={100}
               height={200}
               alt={person.firstname}

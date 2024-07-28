@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from 'react-hot-toast';
 
 type Props = {};
 
@@ -38,12 +39,17 @@ const CardComponent = (props: Props) => {
     console.log("receiving " + nameToDelete);
     if (direction === 'right') {
       try {
-        await postSwipedUserId(id);
+        const response = await postSwipedUserId(id);
         console.log(`Successfully posted swiped user ID: ${id}`);
+
+        if (response.matchFound) {
+          toast.success("You got a new match!");
+        }
       } catch (error) {
         console.error(`Failed to post swiped user ID: ${id}`, error);
       }
     }
+    setPeople((prevPeople) => prevPeople.filter((person) => person.id !== id));
   };
 
   const outOfFrame = (name: string) => {
@@ -56,8 +62,9 @@ const CardComponent = (props: Props) => {
 
   return (
     <div className="tinderCards flex flex-col">
+      <Toaster />
       <div className="tinderCards__container flex justify-center relative w-full max-w-[90vw]">
-        {people.map((person) => (
+      {people.map((person) => (
           <TinderCard
             className="swipe absolute w-full"
             key={person.id} // Use person.id as key for better performance
@@ -65,10 +72,10 @@ const CardComponent = (props: Props) => {
             onSwipe={(dir) => swiped(dir, person.name, person.id)}
             onCardLeftScreen={() => outOfFrame(person.name)}
           >
-            <div className="relative w-[100vw] h-[78vh] px-[1vw]" onClick={() => handleImageClick(person.id)}>
+            <div className="relative w-[100vw] h-[80vh] px-[1vw]" onClick={() => handleImageClick(person.id)}>
               <Image
                 src={person.url}
-                className="card w-full h-full bg-cover bg-center rounded-[2vh] mt-[1vh]"
+                className="card w-full h-[80vh] bg-cover bg-center rounded-[2vh] border border-2 border-cyan-200"
                 width={100}
                 height={200}
                 alt={person.name}
@@ -78,7 +85,8 @@ const CardComponent = (props: Props) => {
               </h2>
             </div>
           </TinderCard>
-        ))}
+        ))
+      }
       </div>
     </div>
   );

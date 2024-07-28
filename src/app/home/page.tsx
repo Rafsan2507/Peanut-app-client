@@ -11,7 +11,7 @@ function page({}: Props) {
   return (
     <>
     
-    <div className='bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0]'>
+    <div className='h-[100vh] w-[100vw] bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0]'>
     <Topnavbar/>
     
     <Cardcomponent/>

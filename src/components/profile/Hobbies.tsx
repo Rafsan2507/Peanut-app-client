@@ -37,9 +37,9 @@ const Hobbies = (props: Props) => {
   }, [id]);
   return (
     <>
-    <div className="grid grid-cols-3 gap-3 p-4">
+    <div className="grid grid-cols-3 gap-3 mt-[5vh] mx-[5vw]">
       {activities.map((activity: string, index: number) => (
-        <div key={index} className="text-[0.8rem] text-gray-800 p-4 border rounded-md shadow-md">
+        <div key={index} className="text-[1.8vh] font-semibold h-[5.5vh] w-[26vw] rounded-[1vh] bg-[#7612FF] text-purple-100 flex items-center justify-center border border-cyan-200 shadow-[5px_12px_20px_-8px_rgba(0,0,0,1)]">
           {activity}
         </div>
       ))}
@@ -50,52 +50,3 @@ const Hobbies = (props: Props) => {
 };
 
 export default Hobbies;
-
-
-{/* <div className="bg-[#000000] space-y-[2vh] pl-[3vw] pb-[2vh]">
-        <div className="flex flex-row pt-[5vh]">
-          <IoMdTime className="size-[3vh] mr-[2vw]" color="#fddad9" />
-          <h2 className="text-[#efd6d4]">Working full time</h2>
-        </div>
-        <div className="flex flex-row space-x-[4vw]">
-          <div className="flex flex-row items-center">
-            <RxHand className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Neighborhood Newbie</h2>
-          </div>
-          <div className="flex flex-row">
-            <GiLeo className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Leo</h2>
-          </div>
-        </div>
-        <div className="flex flex-row space-x-[7vw]">
-          <div className="flex flex-row">
-            <GiCrafting className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Crafty</h2>
-          </div>
-          <div className="flex flex-row items-center">
-            <IoFastFoodOutline
-              className="size-[3vh] mr-[2vw]"
-              color="#fddad9"
-            />
-            <h2 className="text-[#efd6d4]">Foodie</h2>
-          </div>
-          <div className="flex flex-row items-center">
-            <TbWriting className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Writing</h2>
-          </div>
-        </div>
-        <div className="flex flex-row space-x-[7vw]">
-          <div className="flex flex-row">
-            <FaWineGlassAlt className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Wine time</h2>
-          </div>
-          <div className="flex flex-row">
-            <FaBook className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Bookworm</h2>
-          </div>
-          <div className="flex flex-row">
-            <GrYoga className="size-[3vh] mr-[2vw]" color="#fddad9" />
-            <h2 className="text-[#efd6d4]">Yoga</h2>
-          </div>
-        </div>
-      </div> */}
