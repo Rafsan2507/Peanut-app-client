@@ -11,7 +11,7 @@ const page = (props: Props) => {
 
   return (
     <>
-    <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0]">
+    <div className="bg-gradient-to-br from-[#d4a4fa] to-[#6e7df0]">
       <Profile />
       <Hobbies />
       <RecentPost />

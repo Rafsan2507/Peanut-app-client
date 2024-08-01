@@ -31,10 +31,8 @@ const AddImage = (props: Props) => {
 
     try {
       const imageUrl = await uploadImageToCloudinary(imageSelected);
-      console.log("Cloudinary Image URL: ", imageUrl);
 
       const dbResponse = await postImageUrl(imageUrl);
-      console.log("Image URL saved to database: ", dbResponse);
     } catch (error) {
       console.error("Error handling upload: ", error);
       setError("Failed to upload image. Please try again.");
@@ -80,7 +78,7 @@ const AddImage = (props: Props) => {
       </div>
     </div>
     <div className="bg-[#6e7df0] h-[10vh]">
-    <button className="bg-slate-800 h-[5vh] w-[18vw] ml-[70vw] rounded-[1vh] text-[#751d29]">
+    <button className="bg-slate-800 h-[5vh] w-[18vw] ml-[70vw] rounded-[1vh] shadow-[5px_12px_15px_-6px_rgba(180,60,244,1)]">
     <Link
             className={`link ${pathname === '/hobby' ? 'active' : ''}`}
             href="/hobby"

@@ -134,5 +134,10 @@ export default function Registrationcomponent({}: Props) {
             className="h-[5vh] pl-[1vh] rounded-[0.5vh]"
             placeholder="age"
           />
-        </div> */
+        </div> 
+        
+        
+  bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] */
+
+  
 }

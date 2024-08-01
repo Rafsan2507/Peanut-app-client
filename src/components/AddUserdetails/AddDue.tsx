@@ -13,7 +13,6 @@ const AddDue = () => {
     try {
       await postDueValue(Number(dueValue));
       router.push("/image");
-      //console.log("Due value posted successfully");
     } catch (error) {
       console.error("Error posting due value:", error);
     }
@@ -40,7 +39,7 @@ const AddDue = () => {
       </div>
       <div>
         <button
-          className="bg-slate-800 h-[5vh] w-[18vw] mt-[40vh] ml-[70vw] rounded-[1vh] text-white"
+          className="bg-slate-800 h-[5vh] w-[18vw] mt-[40vh] ml-[70vw] rounded-[1vh] shadow-[5px_12px_15px_-6px_rgba(180,60,244,1)]"
           type="submit"
           onClick={handleSubmit}
         >

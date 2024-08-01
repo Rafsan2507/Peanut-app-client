@@ -1,5 +1,5 @@
 "use client";
-import { getUserProfile } from "@/services/infoServices";
+import { getUserProfile } from "@/services/profileServices";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
@@ -20,7 +20,6 @@ const Profile = (props: Props) => {
     const fetchUserProfile = async () => {
       try {
         const userProfile = await getUserProfile(Number(id));
-        console.log("Fetched user profile:", userProfile);
         setPerson(userProfile);
       } catch (error) {
         console.error("Failed to fetch user profile:", error);
@@ -35,7 +34,7 @@ const Profile = (props: Props) => {
   return (
     <>
       <div>
-        <h2 className="w-[100vw] flex text-left text-zinc-100 text-[1.6rem] font-bold pt-[4vh] pl-[6vw]">
+        <h2 className="w-[100vw] flex text-left text-zinc-100 text-[1.7rem] font-bold pt-[4vh] pl-[6vw]">
           {person?.firstname}
         </h2>
         <div className="flex flex-row h-[6vh] pl-[4.5vw] items-center">
@@ -47,7 +46,7 @@ const Profile = (props: Props) => {
           {person?.image && (
             <Image
               src={person.image}
-              className="card w-full h-full bg-cover bg-center border border-2 border-green-100 rounded-[1vh] shadow-[5px_15px_20px_-15px_rgba(0,0,0,1)]"
+              className="card w-full h-full bg-cover bg-center border border-2 border-purple-500 rounded-[1.5vh] shadow-[5px_15px_20px_-15px_rgba(0,0,0,1)]"
               width={100}
               height={200}
               alt={person.firstname}

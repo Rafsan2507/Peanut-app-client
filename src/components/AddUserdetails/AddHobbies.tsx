@@ -1,5 +1,5 @@
 "use client";
-import { getHobbyList, postPreferences } from "@/services/authServices";
+import { getHobbyList, postPreferences } from "@/services/preferenceServices";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronDoubleRight } from "react-icons/hi";
@@ -45,7 +45,6 @@ const AddHobbies = (props: Props) => {
     try {
       const response = await postPreferences(preferences);
       router.push("/home");
-      //console.log(response);
     } catch (error) {
       console.error("Error submitting preferences:", error);
     }
@@ -55,16 +54,17 @@ const AddHobbies = (props: Props) => {
 
   return (
     <>
-    <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-[90vh] w-[100vw] flex flex-col items-center pt-[6vh]">
-      <div className="text-[1.2rem] text-cyan-100 font-semibold mb-[5vh]">
+    <div className="bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] h-[100vh] w-[100vw]">
+    <div className="h-[90vh] w-[100vw] flex flex-col items-center pt-[6vh]">
+      <div className="text-[1.2rem] text-pink-50 font-semibold mb-[5vh]">
         <h2>Preferences</h2>
       </div>
-      <div className="grid grid-cols-3 gap-[5vw] mb-[15vh]">
+      <div className="grid grid-cols-3 gap-[4vw] mb-[15vh]">
         {activities.map(({ id, activity }) => (
           <button
             key={id}
             onClick={() => handleSelectActivity(id, activity)}
-            className={`text-[1.8vh] font-semibold h-[5.5vh] border border-cyan-200 w-[26vw] rounded-[5vh] shadow-[5px_12px_20px_-6px_rgba(60,200,255,1)] ${
+            className={`text-[1.8vh] font-semibold h-[5.5vh] border border-purple-300 w-[28vw] rounded-[5vh] shadow-[5px_12px_20px_-6px_rgba(120,50,255,1)] ${
               preferences.includes(id)
                 ? "bg-[#7559aa] text-green-100"
                 : " text-purple-900"
@@ -88,10 +88,10 @@ const AddHobbies = (props: Props) => {
       
       
     </div>
-    <div className="bg-[#6e7df0] h-[10vh]">
+    <div className="h-[10vh]">
     <button
       onClick={handleSubmit}
-      className="bg-slate-800 h-[5vh] w-[18vw] ml-[70vw] rounded-[1.5vw] shadow-[0px_10px_15px_-8px_rgba(0,0,0,1)]"
+      className="bg-slate-800 h-[5vh] w-[18vw] ml-[70vw] rounded-[1.5vw] shadow-[5px_12px_15px_-6px_rgba(180,60,244,1)]"
     >
       <Link
             className={`link ${pathname === '/home' ? 'active' : ''}`}
@@ -101,6 +101,7 @@ const AddHobbies = (props: Props) => {
       </Link>
     </button>
     </div>
+    </div>
     </>
     
   );
@@ -108,4 +109,5 @@ const AddHobbies = (props: Props) => {
 
 export default AddHobbies;
 
-/* bg-gradient-to-r from-indigo-800 to-pink-600 */
+/* bg-gradient-to-r from-indigo-800 to-pink-600
+bg-gradient-to-b from-[#d4a4fa] to-[#6e7df0] */
